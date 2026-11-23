@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cph8x33gmv8fk"]
+
+[ext_resource type="Script" uid="uid://c0u6cg38kwhge" path="res://ToDo/scripts/to_do.gd" id="1_2xdk2"]
+[ext_resource type="Script" uid="uid://duu4ehqecv0ah" path="res://ToDo/scripts/to_do_panel_container.gd" id="2_cjnku"]
+
+[node name="ToDo" type="PanelContainer" unique_id=1897286419]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2xdk2")
+
+[node name="MainContainer" type="VBoxContainer" parent="." unique_id=439435142]
+layout_mode = 2
+
+[node name="HeaderContainer" type="HBoxContainer" parent="MainContainer" unique_id=254935267]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MainContainer/HeaderContainer" unique_id=570031248]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BodyContainer" type="HBoxContainer" parent="MainContainer" unique_id=815812943]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SideBarContainer" type="VBoxContainer" parent="MainContainer/BodyContainer" unique_id=993692573]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MainContainer/BodyContainer/SideBarContainer" unique_id=217709978]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.30588236, 1, 1, 1)
+
+[node name="ToDoPanelContainer" type="HBoxContainer" parent="MainContainer/BodyContainer" unique_id=1660736889]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_cjnku")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainContainer/BodyContainer/ToDoPanelContainer" unique_id=223405608]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CardPanelContainer" type="VBoxContainer" parent="MainContainer/BodyContainer/ToDoPanelContainer/MarginContainer" unique_id=205054057]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="ScrollCardPanel" type="ScrollContainer" parent="MainContainer/BodyContainer/ToDoPanelContainer/MarginContainer/CardPanelContainer" unique_id=136391756]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ListCards" type="VBoxContainer" parent="MainContainer/BodyContainer/ToDoPanelContainer/MarginContainer/CardPanelContainer/ScrollCardPanel" unique_id=1832384038]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CreateCardButton" type="Button" parent="MainContainer/BodyContainer/ToDoPanelContainer/MarginContainer/CardPanelContainer" unique_id=1116566457]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+text = "+ card"
+
+[node name="WorkPanelContainer" type="VBoxContainer" parent="MainContainer/BodyContainer/ToDoPanelContainer" unique_id=1804112216]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameCardLabel" type="Label" parent="MainContainer/BodyContainer/ToDoPanelContainer/WorkPanelContainer" unique_id=1251697270]
+layout_mode = 2
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MainContainer/BodyContainer/ToDoPanelContainer/MarginContainer/CardPanelContainer/CreateCardButton" to="MainContainer/BodyContainer/ToDoPanelContainer" method="_on_create_card_button_pressed"]

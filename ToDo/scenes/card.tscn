@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://63uwhk0uva7p"]
+
+[ext_resource type="Script" uid="uid://dk1dtw1iop312" path="res://ToDo/scripts/card.gd" id="1_og0qj"]
+
+[node name="Card" type="PanelContainer" unique_id=192630715]
+offset_right = 187.0
+offset_bottom = 40.0
+script = ExtResource("1_og0qj")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1400659669]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CardContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1005071277]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NameCardLabel" type="Label" parent="MarginContainer/CardContainer" unique_id=1006938467]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CardMenuButton" type="MenuButton" parent="MarginContainer/CardContainer" unique_id=774956592]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+text = "..."
+item_count = 2
+popup/item_0/text = "UI_DELETE"
+popup/item_0/id = 0
+popup/item_1/text = "UI_EDIT"
+popup/item_1/id = 1

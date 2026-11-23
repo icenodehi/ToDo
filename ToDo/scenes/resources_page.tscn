@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b3p71rv0o7fbb"]
+
+[ext_resource type="Script" uid="uid://31u8kym7618y" path="res://ToDo/scripts/resources_page.gd" id="1_2kgqs"]
+
+[node name="ResourcesPage" type="VBoxContainer" unique_id=1351550398]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+script = ExtResource("1_2kgqs")
+title_key = "UI_RESOURCES"
+
+[node name="ContactButton" type="Button" parent="." unique_id=461327882]
+layout_mode = 2
+text = "UI_CONTACT"
+
+[node name="DonateButton" type="Button" parent="." unique_id=1998587448]
+layout_mode = 2
+text = "UI_SUPPORT"
+
+[connection signal="pressed" from="ContactButton" to="." method="_on_contact_button_pressed"]
+[connection signal="pressed" from="DonateButton" to="." method="_on_donate_button_pressed"]

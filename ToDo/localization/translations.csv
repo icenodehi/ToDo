@@ -1,0 +1,17 @@
+keys,en,ru
+UI_MY_PROJECT,my projects,мои проекты
+UI_ADD_TITLE,add title,добавить заголовок
+UI_ADD_TASK,+ add task, + добавить задачу
+UI_DELETE,delete,Удалить
+UI_EDIT,Edit,Редактировать
+UI_ENTER_NAME,Enter name,Введите имя
+UI_CANCEL,Cancel,Отмена
+UI_CREATE,Create,Создать
+UI_WELCOME,Welcome.,Добро пожаловать.
+UI_SETTINGS,Settings,Настройки
+UI_LANGUAGE,Language,Язык
+UI_CLOSE,Close,Закрыть
+UI_GENERAL,General,Общее
+UI_RESOURCES,Support & resources,Поддержка и ресурсы
+UI_CONTACT,Contact me,Связаться со мной
+UI_SUPPORT,Support the project,Поддержать проект

@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bw08lngs361gf"]
+
+[ext_resource type="Script" uid="uid://b6op42wkwyyn5" path="res://ToDo/scripts/settings_menu.gd" id="1_35slw"]
+[ext_resource type="PackedScene" uid="uid://338nqxr4elma" path="res://ToDo/scenes/general_page.tscn" id="2_riyy8"]
+[ext_resource type="PackedScene" uid="uid://b3p71rv0o7fbb" path="res://ToDo/scenes/resources_page.tscn" id="3_evr0e"]
+
+[node name="SettingsMenu" type="ColorRect" unique_id=1790286403]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.13725491)
+script = ExtResource("1_35slw")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1769474892]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.5
+offset_top = -273.0
+offset_right = 248.5
+offset_bottom = 273.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1579508887]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer" unique_id=180189762]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1942806529]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.31
+
+[node name="SettingsLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=156488692]
+layout_mode = 2
+text = "UI_SETTINGS"
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1857440507]
+layout_mode = 2
+
+[node name="TabsContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1656313589]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PagesContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=302179350]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GeneralPage" parent="PanelContainer/MarginContainer/HBoxContainer/PagesContainer" unique_id=812120374 instance=ExtResource("2_riyy8")]
+layout_mode = 2
+
+[node name="ResourcesPage" parent="PanelContainer/MarginContainer/HBoxContainer/PagesContainer" unique_id=1351550398 instance=ExtResource("3_evr0e")]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1395005146]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 0
+text = "x"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]

@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://bye86naiu108e"]
+
+[ext_resource type="Script" uid="uid://bf5nbgdus8rlx" path="res://ToDo/scripts/create_project_menu.gd" id="1_uah68"]
+
+[node name="CreateProjectMenu" type="ColorRect" unique_id=708237321]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(1, 1, 1, 0.101960786)
+script = ExtResource("1_uah68")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=535594291]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=446044094]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1131933276]
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=544816399]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1604889365]
+layout_mode = 2
+text = "UI_ENTER_NAME"
+
+[node name="NameProjectLineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=805229272]
+unique_name_in_owner = true
+layout_mode = 2
+max_length = 30
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2119959186]
+layout_mode = 2
+
+[node name="CancelButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=941077052]
+custom_minimum_size = Vector2(60, 20)
+layout_mode = 2
+text = "UI_CANCEL"
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=828696835]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CreateProjectButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=768405587]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 20)
+layout_mode = 2
+text = "UI_CREATE"
+
+[connection signal="text_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/NameProjectLineEdit" to="." method="_on_name_project_line_edit_text_changed"]
+[connection signal="text_submitted" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/NameProjectLineEdit" to="." method="_on_name_project_line_edit_text_submitted"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/CreateProjectButton" to="." method="_on_create_project_button_pressed"]

@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dc33a8hgwjs6d"]
+
+[ext_resource type="Script" uid="uid://dg61pt1yovbyb" path="res://ToDo/scripts/title.gd" id="1_bhr7r"]
+
+[node name="Title" type="VBoxContainer" unique_id=1247499264]
+offset_right = 127.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+script = ExtResource("1_bhr7r")
+
+[node name="TitleContainer" type="HBoxContainer" parent="." unique_id=888454417]
+layout_mode = 2
+
+[node name="ShowHideDetailsButton" type="Button" parent="TitleContainer" unique_id=1466537028]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+toggle_mode = true
+text = "<"
+flat = true
+
+[node name="NameTitleLable" type="Label" parent="TitleContainer" unique_id=9150642]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Enter text"
+
+[node name="EditNameLineEdit" type="LineEdit" parent="TitleContainer" unique_id=716521698]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+max_length = 30
+flat = true
+
+[node name="TitleDetailsButton" type="MenuButton" parent="TitleContainer" unique_id=379750697]
+unique_name_in_owner = true
+layout_mode = 2
+text = "..."
+item_count = 2
+popup/item_0/text = "UI_DELETE"
+popup/item_0/id = 0
+popup/item_1/text = "UI_EDIT"
+popup/item_1/id = 1
+
+[node name="HSeparator" type="HSeparator" parent="." unique_id=943748537]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TasksContainer" type="VBoxContainer" parent="." unique_id=1513961112]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AddTaskContainer" type="HBoxContainer" parent="." unique_id=1979511643]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AddTaskButton" type="Button" parent="AddTaskContainer" unique_id=2015570416]
+layout_mode = 2
+text = "UI_ADD_TASK"
+flat = true
+
+[connection signal="gui_input" from="TitleContainer" to="." method="_on_title_container_gui_input"]
+[connection signal="toggled" from="TitleContainer/ShowHideDetailsButton" to="." method="_on_show_hide_details_button_toggled"]
+[connection signal="focus_exited" from="TitleContainer/EditNameLineEdit" to="." method="_on_edit_name_line_edit_focus_exited"]
+[connection signal="text_submitted" from="TitleContainer/EditNameLineEdit" to="." method="_on_edit_name_line_edit_text_submitted"]
+[connection signal="pressed" from="AddTaskContainer/AddTaskButton" to="." method="_on_add_task_button_pressed"]

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://338nqxr4elma"]
+
+[ext_resource type="Script" uid="uid://d3qfvyjnwlnf3" path="res://ToDo/scripts/general_page.gd" id="1_om1np"]
+
+[node name="GeneralPage" type="VBoxContainer" unique_id=812120374]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+script = ExtResource("1_om1np")
+title_key = "UI_GENERAL"
+
+[node name="Label" type="Label" parent="." unique_id=2058909070]
+layout_mode = 2
+text = "UI_LANGUAGE"
+
+[node name="LanguageOptionButton" type="OptionButton" parent="." unique_id=1122189612]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="item_selected" from="LanguageOptionButton" to="." method="_on_language_option_button_item_selected"]
