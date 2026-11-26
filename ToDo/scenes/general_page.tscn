@@ -17,4 +17,11 @@ text = "UI_LANGUAGE"
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="DeleteCompletedCheckButton" type="CheckButton" parent="." unique_id=32786238]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "UI_DELETE_COMPLETED_TIP"
+text = "UI_DELETE_COMPLETED"
+
 [connection signal="item_selected" from="LanguageOptionButton" to="." method="_on_language_option_button_item_selected"]
+[connection signal="toggled" from="DeleteCompletedCheckButton" to="." method="_on_delete_completed_check_button_toggled"]

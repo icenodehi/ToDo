@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://joqyvkcj4s3m"
-path="res://.godot/imported/32698-velosiped_bike.jpg-65a2034f09fe913cf8f69d5c6702d6c0.ctex"
+uid="uid://ycmkhtc4u1e"
+path="res://.godot/imported/minimize_icon.png-bced6f6aef36cef601fd5487525578b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://32698-velosiped_bike.jpg"
-dest_files=["res://.godot/imported/32698-velosiped_bike.jpg-65a2034f09fe913cf8f69d5c6702d6c0.ctex"]
+source_file="res://minimize_icon.png"
+dest_files=["res://.godot/imported/minimize_icon.png-bced6f6aef36cef601fd5487525578b0.ctex"]
 
 [params]
 

@@ -4,7 +4,6 @@ const SELECTION: Array[Dictionary] = [
 	{
 		"title_key": "UI_SELECTION_CONTACT",
 		"items": [
-			{"text": "Telegram", "action": "link", "value": "https://t.me/+PeHxHS5-nyVlYzdi"},
 			{"text": "UI_COPY_EMAIL", "action": "copy", "value": "icenode.hi@gmail.com"},
 		],
 	},

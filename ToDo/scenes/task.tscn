@@ -14,11 +14,15 @@ layout_mode = 2
 [node name="TaskCheckBox" type="CheckBox" parent="TaskContainer" unique_id=1454039038]
 layout_mode = 2
 
-[node name="TaskNameLabel" type="Label" parent="TaskContainer" unique_id=598149360]
+[node name="TaskNameLabel" type="RichTextLabel" parent="TaskContainer" unique_id=454039968]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
+bbcode_enabled = true
 text = "task"
+fit_content = true
+scroll_active = false
 
 [node name="EditNameLineEdit" type="LineEdit" parent="TaskContainer" unique_id=327609866]
 unique_name_in_owner = true

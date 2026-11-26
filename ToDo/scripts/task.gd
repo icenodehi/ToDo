@@ -3,11 +3,15 @@ extends VBoxContainer
 signal delete_task(task)
 signal data_changed
 
+const DELETE_DELAY: float = 1.5
+
 var data_task: DataTask
+var data_title: DataTitle
 var is_entered: bool
 var not_confirmed: bool
+var delete_timer: Timer
 
-@onready var task_name_label: Label = %TaskNameLabel
+@onready var task_name_label: RichTextLabel = %TaskNameLabel
 @onready var task_check_box: CheckBox = $TaskContainer/TaskCheckBox
 @onready var task_details_button: MenuButton = %TaskDetailsButton
 @onready var edit_name_line_edit: LineEdit = %EditNameLineEdit
@@ -15,16 +19,40 @@ var not_confirmed: bool
 func _ready() -> void:
 	var popup = task_details_button.get_popup()
 	popup.id_pressed.connect(_on_menu_pressed)
+	delete_timer = Timer.new()
+	delete_timer.one_shot = true
+	delete_timer.wait_time = DELETE_DELAY
+	delete_timer.timeout.connect(_on_delete_timer_timeout)
+	add_child(delete_timer)
 	switch_view()
 
-func test(task: DataTask) -> void:
+func test(task: DataTask, title: DataTitle) -> void:
 	data_task = task
-	task_name_label.text = data_task.text_task
-	task_check_box.button_pressed = data_task.is_complete
+	data_title = title
+	task_check_box.set_pressed_no_signal(data_task.is_complete)
+	show_task_text()
+	
+func show_task_text() -> void:
+	var safe_text := data_task.text_task.replace("[", "[ld]")
+	if data_task.is_complete:
+		task_name_label.text = "[s]%s[/s]" % safe_text
+		task_name_label.modulate.a = 0.55
+	else:
+		task_name_label.text = safe_text
+		task_name_label.modulate.a = 1.0
 	
 func _on_task_check_box_toggled(toggled_on: bool) -> void:
 	data_task.is_complete = toggled_on
+	show_task_text()
 	data_changed.emit()
+	if toggled_on and data_title != null and data_title.should_delete(AppSettings.delete_completed):
+		delete_timer.start()
+	else:
+		delete_timer.stop()
+
+func _on_delete_timer_timeout() -> void:
+	if data_task.is_complete:
+		delete_task.emit(self)
 
 func _on_menu_pressed(id: int) -> void:
 	if id == 0:
@@ -51,8 +79,8 @@ func input_complition(is_applay: bool) -> void:
 	if is_applay:
 		var text_clear = edit_name_line_edit.text.strip_edges()
 		if not text_clear.is_empty():
-			task_name_label.text = text_clear
 			data_task.text_task = text_clear
+			show_task_text()
 			data_changed.emit()
 	if not_confirmed:
 		if data_task.text_task.is_empty():

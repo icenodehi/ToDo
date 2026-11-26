@@ -3,6 +3,8 @@ extends VBoxContainer
 signal delete_title(title)
 signal data_changed
 
+const MENU_FOLLOW_SETTINGS_ID: int = 2
+
 var is_entered: bool
 var task_scene = preload("res://ToDo/scenes/task.tscn")
 var data_title: DataTitle
@@ -15,10 +17,13 @@ var not_confirmed: bool
 @onready var h_separator: HSeparator = %HSeparator
 @onready var add_task_container: HBoxContainer = %AddTaskContainer
 @onready var show_hide_details_button: Button = %ShowHideDetailsButton
+@onready var delete_mode_check_button: CheckButton = %DeleteModeCheckButton
 
 func _ready() -> void:
 	var popup = title_details_button.get_popup()
+	popup.add_check_item("UI_FOLLOW_SETTINGS", MENU_FOLLOW_SETTINGS_ID)
 	popup.id_pressed.connect(_on_menu_pressed)
+	AppSettings.delete_completed_changed.connect(_on_delete_completed_changed)
 	switch_view()
 
 func data_titles(data: DataTitle) -> void:
@@ -26,8 +31,20 @@ func data_titles(data: DataTitle) -> void:
 	show_hide_details_button.button_pressed = data_title.roll
 	applay_visible(data_title.roll)
 	name_title_lable.text = data_title.name_title
+	update_complete_mode_ui()
 	for i in data_title.task_array:
 		create_node_task(i)
+
+func update_complete_mode_ui() -> void:
+	var effevtive_delete := data_title.should_delete(AppSettings.delete_completed)
+	delete_mode_check_button.set_pressed_no_signal(effevtive_delete)
+	var popup := title_details_button.get_popup()
+	var index := popup.get_item_index(MENU_FOLLOW_SETTINGS_ID)
+	popup.set_item_checked(index, data_title.complete_mode == DataTitle.CompleteMode.INHERIT)
+
+func _on_delete_completed_changed(_value: bool) -> void:
+	if data_title != null:
+		update_complete_mode_ui()
 
 func _on_add_task_button_pressed() -> void:
 	var data_task: DataTask = DataTask.new()
@@ -38,7 +55,7 @@ func _on_add_task_button_pressed() -> void:
 func create_node_task(data_tesk) -> Control:
 	var task = task_scene.instantiate()
 	tasks_container.add_child(task)
-	task.test(data_tesk)
+	task.test(data_tesk, data_title)
 	task.delete_task.connect(_on_delete_task)
 	task.data_changed.connect(data_changed.emit)
 	return task
@@ -85,6 +102,11 @@ func _on_menu_pressed(id) -> void:
 		delete_title.emit(self)
 	elif id == 1:
 		title_editing()
+	elif id == MENU_FOLLOW_SETTINGS_ID:
+		if data_title.complete_mode != DataTitle.CompleteMode.INHERIT:
+			data_title.complete_mode = DataTitle.CompleteMode.INHERIT
+			update_complete_mode_ui()
+			data_changed.emit()
 
 func _on_edit_name_line_edit_text_submitted(_new_text: String) -> void:
 	input_complition(true)
@@ -109,4 +131,12 @@ func applay_visible(turn: bool) -> void:
 func _on_show_hide_details_button_toggled(toggled_on: bool) -> void:
 	data_title.roll = toggled_on
 	applay_visible(toggled_on)
+	data_changed.emit()
+
+func _on_delete_mode_check_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		data_title.complete_mode = DataTitle.CompleteMode.DELETE
+	else:
+		data_title.complete_mode = DataTitle.CompleteMode.STRIKE
+	update_complete_mode_ui()
 	data_changed.emit()

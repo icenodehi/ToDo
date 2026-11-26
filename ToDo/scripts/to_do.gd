@@ -5,6 +5,8 @@ const SAVE_PATH: String = "user://Eisbrise.json"
 const TEMP_PATH: String = "user://Eisbrise.tmp"
 const BACKUP_PATH: String = "user://Eisbrise.corrupted.json"
 const SAVE_DALAY: float = 1.0
+const ICON_FULLSCRENE: Texture2D = preload("res://maximize_icon.png")
+const ICON_WINDOWED: Texture2D = preload("res://restore_icon.png")
 
 var title_scene = preload("res://ToDo/scenes/title.tscn")
 var card_scene = preload("res://ToDo/scenes/card.tscn")
@@ -26,6 +28,7 @@ var cards_storage: Dictionary[int, DataCardResource] = {}
 @onready var create_card_button: Button = %CreateCardButton
 @onready var create_project_menu: ColorRect = %CreateProjectMenu
 @onready var settings_menu: ColorRect = %SettingsMenu
+@onready var full_screne_button: Button = %FullScreneButton
 
 func _ready() -> void:
 	save_timer = Timer.new()
@@ -142,10 +145,17 @@ func _on_wrap_button_pressed() -> void:
 	get_window().mode = Window.MODE_MINIMIZED
 
 func _on_full_screne_button_pressed() -> void:
-	if get_window().mode == Window.MODE_FULLSCREEN:
-		get_window().mode = Window.MODE_WINDOWED
+	var window := get_window()
+	if window.mode == Window.MODE_FULLSCREEN:
+		window.mode = Window.MODE_WINDOWED
 	else:
-		get_window().mode = Window.MODE_FULLSCREEN
+		window.mode = Window.MODE_FULLSCREEN
+	update_window_button()
+
+func update_window_button() -> void:
+	var is_fullscreen := get_window().mode == Window.MODE_FULLSCREEN
+	full_screne_button.icon = ICON_WINDOWED if is_fullscreen else ICON_FULLSCRENE
+	full_screne_button.tooltip_text = "UI_WINDOWED" if is_fullscreen else "UI_FULLSCRENE"
 
 func _on_close_button_pressed() -> void:
 	save_project()

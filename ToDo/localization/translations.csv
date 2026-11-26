@@ -20,3 +20,9 @@ UI_SELECTION_RESOURCES,Resources,Ресурсы
 UI_COPY_EMAIL,Copy email address,Скопировать адрес почты
 UI_COPIED,Copied!,Скопировано!
 UI_GITHUB,Project on GitHub,Проект на GitHub
+UI_DELETE_COMPLETED,Delete completed tasks,Удалять выполненые задачи
+UI_DELETE_COMPLETED_TIP,On: completed task are deleted. off: they are crossed out.,Вкл: выполненые задачи удаляються. Выкл: они зачеркиваются.
+UI_TITLE_DELETE_TIP,On: delete completed tasks in this title. Off: cross them out.,Вкл: удалять выполненые задачи в этом заголовке. Выкл: зачеркивать.
+UI_FOLLOW_SETTINGS,As in settings,Как в настройках
+UI_FULLSCRENE,Fullscreen,На весь экран
+UI_WINDOWED,Wndowed,Оконный режим

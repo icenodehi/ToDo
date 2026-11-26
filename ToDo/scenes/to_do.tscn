@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://c0u6cg38kwhge" path="res://ToDo/scripts/to_do.gd" id="1_2xdk2"]
 [ext_resource type="Script" uid="uid://duu4ehqecv0ah" path="res://ToDo/scripts/to_do_panel_container.gd" id="2_cjnku"]
+[ext_resource type="Texture2D" uid="uid://irtk32iirrcu" path="res://settings_icon.png" id="2_m0q3x"]
 [ext_resource type="PackedScene" uid="uid://bye86naiu108e" path="res://ToDo/scenes/create_project_menu.tscn" id="3_d8ks7"]
+[ext_resource type="Texture2D" uid="uid://ycmkhtc4u1e" path="res://minimize_icon.png" id="3_ocf3w"]
+[ext_resource type="Texture2D" uid="uid://beipflbpn4cip" path="res://maximize_icon.png" id="4_6c7f2"]
 [ext_resource type="PackedScene" uid="uid://bw08lngs361gf" path="res://ToDo/scenes/settings_menu.tscn" id="4_73dgf"]
 
 [node name="ToDo" type="PanelContainer" unique_id=1897286419]
@@ -32,8 +35,12 @@ theme_override_constants/margin_bottom = 15
 layout_mode = 2
 
 [node name="SettingsButton" type="Button" parent="MainContainer/HeaderPanelContainer/MarginContainer/HeaderContainer" unique_id=1425178036]
-custom_minimum_size = Vector2(40, 30)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+icon = ExtResource("2_m0q3x")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="Label" type="Label" parent="MainContainer/HeaderPanelContainer/MarginContainer/HeaderContainer" unique_id=1450217805]
 layout_mode = 2
@@ -46,17 +53,23 @@ custom_minimum_size = Vector2(40, 30)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_stretch_ratio = 8.0
-text = "-"
+theme_override_font_sizes/font_size = 40
+icon = ExtResource("3_ocf3w")
+expand_icon = true
 
 [node name="FullScreneButton" type="Button" parent="MainContainer/HeaderPanelContainer/MarginContainer/HeaderContainer" unique_id=906877208]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 30)
 layout_mode = 2
 size_flags_horizontal = 8
+icon = ExtResource("4_6c7f2")
+expand_icon = true
 
 [node name="CloseButton" type="Button" parent="MainContainer/HeaderPanelContainer/MarginContainer/HeaderContainer" unique_id=2124103464]
 custom_minimum_size = Vector2(40, 30)
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 30
 text = "x"
 
 [node name="BodyContainer" type="HBoxContainer" parent="MainContainer" unique_id=1660736889]
