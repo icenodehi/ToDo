@@ -13,5 +13,10 @@ UI_LANGUAGE,Language,Язык
 UI_CLOSE,Close,Закрыть
 UI_GENERAL,General,Общее
 UI_RESOURCES,Support & resources,Поддержка и ресурсы
-UI_CONTACT,Contact me,Связаться со мной
-UI_SUPPORT,Support the project,Поддержать проект
+UI_VERSION,Version: %s,Версия: %s
+UI_SELECTION_CONTACT,Contact,Связь
+UI_SELECTION_SUPPORT,Support the project,Поддержать проект
+UI_SELECTION_RESOURCES,Resources,Ресурсы
+UI_COPY_EMAIL,Copy email address,Скопировать адрес почты
+UI_COPIED,Copied!,Скопировано!
+UI_GITHUB,Project on GitHub,Проект на GitHub
